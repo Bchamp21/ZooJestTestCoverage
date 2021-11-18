@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RelayHorseGroup.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ZooJestApp</a> &gt; <a href="index.source.html" class="el_package">edu.nwmissouri.zoo06group</a> &gt; <span class="el_source">RelayHorseGroup.java</span></div><h1>RelayHorseGroup.java</h1><pre class="source lang-java linenums">package edu.nwmissouri.zoo06group;
+
+import edu.nwmissouri.zoo06group.RelayHorse;
+import java.util.ArrayList;
+
+/**
+ * Provides methods to create and run a group of Aardvarks
+ *
+ * @author BHUVAN CHANDRA SARAKAM (S544899)
+ */
+<span class="nc" id="L11">public class RelayHorseGroup {</span>
+
+    private static ArrayList&lt;RelayHorse&gt; myGroup;
+
+    /**
+     * Create a static group of RelayHorse
+     *
+     * @return the number of animals in the group
+     */
+    public static int create() {
+<span class="nc" id="L21">        myGroup = new ArrayList&lt;&gt;();</span>
+        
+<span class="nc" id="L23">        RelayHorse a = new RelayHorse(&quot;Abbie&quot;);</span>
+<span class="nc" id="L24">        myGroup.add(a);</span>
+<span class="nc" id="L25">        myGroup.add(new RelayHorse(&quot;Boss&quot;));</span>
+<span class="nc" id="L26">        myGroup.add(new RelayHorse(&quot;Cass&quot;));</span>
+
+<span class="nc" id="L28">        return myGroup.size();</span>
+    }
+
+    /**
+     * Run (simulate) the group doing things
+     */
+    public static void run() {
+<span class="nc" id="L35">        System.out.println(&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&quot;);</span>
+<span class="nc" id="L36">        System.out.println(&quot;Hey - look at the RelayHorse!&quot;);</span>
+<span class="nc" id="L37">        myGroup.forEach(RelayHorse -&gt; {</span>
+<span class="nc" id="L38">            RelayHorse.speak();</span>
+<span class="nc" id="L39">            RelayHorse.move();</span>
+<span class="nc" id="L40">            RelayHorse.profess();</span>
+<span class="nc" id="L41">        });</span>
+<span class="nc" id="L42">        System.out.println(&quot;Nice RelayHorse - that was fun!&quot;);</span>
+<span class="nc" id="L43">        System.out.println(&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&quot;);</span>
+<span class="nc" id="L44">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

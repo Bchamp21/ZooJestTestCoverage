@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RockClimbing.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ZooJestApp</a> &gt; <a href="index.source.html" class="el_package">edu.nwmissouri.zoo06group</a> &gt; <span class="el_source">RockClimbing.java</span></div><h1>RockClimbing.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package edu.nwmissouri.zoo06group;
+
+/**
+ *RockClimbing class (derived subclass of the superclass AdventureRides)
+ * @author Srilekha Janagam
+ */
+<span class="fc" id="L11">public class RockClimbing extends AdventureRides {</span>
+     private double length;
+     private int players;
+     private String ticketType;
+     /**
+      * getter Length method
+      * @return length
+      */
+
+    public double getLength() {
+<span class="nc" id="L21">        return length;</span>
+    }
+    /**
+     * setter length method
+     * @param length 
+     */
+
+    public void setLength(double length) {
+<span class="nc" id="L29">        this.length = length;</span>
+<span class="nc" id="L30">    }</span>
+    /**
+     * getter Players method
+     * @return players
+     */
+
+    public int getPlayers() {
+<span class="nc" id="L37">        return players;</span>
+    }
+    /**
+     * setter Players method
+     * @param players 
+     */
+
+    public void setPlayers(int players) {
+<span class="nc" id="L45">        this.players = players;</span>
+<span class="nc" id="L46">    }</span>
+     /**
+      * run method
+      */
+  
+    @Override
+    public void run() {
+<span class="nc" id="L53">        throw new UnsupportedOperationException(&quot;Not supported yet.&quot;); //To change body of generated methods, choose Tools | Templates.</span>
+    }
+    /**
+     * resultOfGame method
+     * @return You never Loose
+     */
+    @Override
+    public String resultOfGame(){
+<span class="fc" id="L61">        System.out.println(&quot;You won the game&quot;);</span>
+<span class="fc" id="L62">        return &quot;You never Loose&quot;;</span>
+    }
+    /**
+     * onlineBooking method
+     * @return Your ticket is booked
+     */
+    @Override
+    public  String onlineBooking(){
+<span class="fc" id="L70">         System.out.println(&quot;Welcome to adventure rides&quot;);</span>
+<span class="fc" id="L71">    return &quot;Your ticket is booked&quot;;</span>
+    }
+    /**
+     * climb method
+     * @return a
+     */
+    
+    public static double climb(){
+<span class="fc" id="L79">       double a=0;</span>
+<span class="fc" id="L80">       System.out.println(&quot;You reached maximum height&quot;);</span>
+<span class="fc" id="L81">        return a;</span>
+    }
+    
+    
+    
+     
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

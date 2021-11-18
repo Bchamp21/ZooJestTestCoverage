@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ZooIndexController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ZooJestApp</a> &gt; <a href="index.source.html" class="el_package">edu.nwmissouri.zoo06group</a> &gt; <span class="el_source">ZooIndexController.java</span></div><h1>ZooIndexController.java</h1><pre class="source lang-java linenums">package edu.nwmissouri.zoo06group;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.Map;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+/**
+ * Controller that handles the default request (&quot;/&quot;).
+ *
+ * Use the new Java 15 text blocks to provide our menu. Thymeleaf:
+ * https://spring.io/guides/gs/serving-web-content/
+ *
+ * @author Indu Chinthakuntla
+ */
+@Controller
+<span class="fc" id="L20">public class ZooIndexController {</span>
+
+    private static final String GREETING_MESSAGE = &quot;Welcome to our Zoo games!&quot;;
+    private static final String GOODBYE_MESSAGE = &quot;Thank you for visiting our zoo!&quot;;
+    private static final int NUMBER_ANIMAL_TYPES = 60;
+
+    /**
+     * The @GetMapping annotation ensures that HTTP GET requests to / are mapped
+     * to the index() method.Example:
+     * https://spring.io/guides/gs/serving-web-content/
+     *
+     *
+     * @param idParam - the id provided in the URL
+     * @param model - the model that holds information from controller to view
+     * @return
+     */
+    @GetMapping(path = &quot;/&quot;)
+    public String index(
+            @RequestParam(name = &quot;id&quot;, required = false, defaultValue = &quot;0&quot;) String idParam,
+            Model model) {
+<span class="nc" id="L40">        model.addAttribute(&quot;id&quot;, idParam);</span>
+<span class="nc" id="L41">        model.addAttribute(&quot;name&quot;, &quot;World&quot;);</span>
+<span class="nc" id="L42">        model.addAttribute(&quot;greeting&quot;, GREETING_MESSAGE);</span>
+<span class="nc" id="L43">        model.addAttribute(&quot;animalMap&quot;, ZooBuildSwitch.getAllAnimalMap());</span>
+<span class="nc" id="L44">        model.addAttribute(&quot;customAnimalGroup&quot;, getCustomAnimalGroup(idParam));</span>
+        // associated with index.hmtl in src/main/resources/templates
+<span class="nc" id="L46">        return &quot;index&quot;;</span>
+    }
+
+    /**
+     * Map GET request to &quot;/about&quot; to about() method.
+     *
+     * @return filename from src/main/resources/templates folder
+     */
+    @GetMapping(path = &quot;/about&quot;)
+    public String about() {
+<span class="nc" id="L56">        return &quot;about&quot;;</span>
+    }
+
+    /**
+     * Map GET request to &quot;/games&quot; to games() method.
+     *
+     * @return filename from src/main/resources/templates folder
+     */
+    @GetMapping(path = &quot;/games&quot;)
+    public String games() {
+<span class="nc" id="L66">        return &quot;games&quot;;</span>
+    }
+
+    /**
+     * Map GET request to &quot;/persons&quot; to persons() method.
+     *
+     * @return filename from src/main/resources/templates folder
+     */
+//    @GetMapping(path = &quot;/persons&quot;)
+//    public String persons() {
+//        return &quot;persons&quot;;
+//    }
+
+    /**
+     * Map GET request to &quot;/rides&quot; to rides() method.
+     *
+     * @return filename from src/main/resources/templates folder
+     */
+//    @GetMapping(path = &quot;/rides&quot;)
+//    public String rides() {
+//        return &quot;rides&quot;;
+//    }
+
+    /**
+     * Map GET request to &quot;/vehicles&quot; to vehicles() method.
+     *
+     * @return filename from src/main/resources/templates folder
+     */
+//    @GetMapping(path = &quot;/vehicles&quot;)
+//    public String vehicles() {
+//        return &quot;vehicles&quot;;
+//    }
+
+    private String getCustomAnimalGroup(String id) {
+        // Create a stream to hold the output
+<span class="nc" id="L101">        var newStream = new ByteArrayOutputStream();</span>
+<span class="nc" id="L102">        var newPrintStream = new PrintStream(newStream);</span>
+        // IMPORTANT: Save the old System.out!
+<span class="nc" id="L104">        PrintStream old = System.out;</span>
+        // Tell Java to use your special stream
+<span class="nc" id="L106">        System.setOut(newPrintStream);</span>
+
+<span class="nc" id="L108">        var intID = Integer.parseInt(id);</span>
+
+<span class="nc bnc" id="L110" title="All 16 branches missed.">        switch (intID) {</span>
+
+            case 1 -&gt; {
+<span class="nc" id="L113">                CheetahGroup.create();</span>
+<span class="nc" id="L114">                CheetahGroup.run();</span>
+<span class="nc" id="L115">            }</span>
+            
+            case 2 -&gt; {
+<span class="nc" id="L118">                GiraffeGroup.create();</span>
+<span class="nc" id="L119">                GiraffeGroup.run();</span>
+<span class="nc" id="L120">            }</span>
+            
+            case 3 -&gt; {
+<span class="nc" id="L123">                HippopotamusGroup.create();</span>
+<span class="nc" id="L124">                HippopotamusGroup.run();</span>
+<span class="nc" id="L125">            }</span>
+            
+            case 4 -&gt; {
+<span class="nc" id="L128">                LigerGroup.create();</span>
+<span class="nc" id="L129">                LigerGroup.run();</span>
+<span class="nc" id="L130">            }</span>
+            
+            case 5 -&gt; {
+<span class="nc" id="L133">                LionGroup.create();</span>
+<span class="nc" id="L134">                LionGroup.run();</span>
+<span class="nc" id="L135">            }</span>
+            
+            case 6 -&gt; {
+<span class="nc" id="L138">                RelayHorseGroup.create();</span>
+<span class="nc" id="L139">                RelayHorseGroup.run();</span>
+<span class="nc" id="L140">            }</span>
+            case 7 -&gt; {
+<span class="nc" id="L142">                KnockingGame k= new KnockingGame();</span>
+                
+<span class="nc" id="L144">                k.resultOfGame();</span>
+<span class="nc" id="L145">                k.onlineBooking();</span>
+<span class="nc" id="L146">                KnockingGame.hit();</span>
+<span class="nc" id="L147">            }</span>
+            
+            case 8 -&gt; {
+<span class="nc" id="L150">                JungleCruze k= new JungleCruze();</span>
+               
+<span class="nc" id="L152">                k.resultOfGame();</span>
+<span class="nc" id="L153">                k.onlineBooking();</span>
+<span class="nc" id="L154">                JungleCruze.speed();</span>
+<span class="nc" id="L155">            }</span>
+            case 9 -&gt; {
+<span class="nc" id="L157">                JungleRiveBattle k= new JungleRiveBattle();</span>
+        
+<span class="nc" id="L159">                k.resultOfGame();</span>
+<span class="nc" id="L160">                k.onlineBooking();</span>
+               
+<span class="nc" id="L162">            }</span>
+            
+            case 10 -&gt; {
+<span class="nc" id="L165">                RockClimbing k= new RockClimbing();</span>
+                
+<span class="nc" id="L167">                k.resultOfGame();</span>
+<span class="nc" id="L168">                k.onlineBooking();</span>
+<span class="nc" id="L169">                RockClimbing.climb();</span>
+<span class="nc" id="L170">            }</span>
+            case 11 -&gt; {
+<span class="nc" id="L172">                RollerCoaster k= new RollerCoaster();</span>
+                
+<span class="nc" id="L174">                k.resultOfGame();</span>
+<span class="nc" id="L175">                k.onlineBooking();</span>
+<span class="nc" id="L176">                RollerCoaster.rotations();</span>
+<span class="nc" id="L177">            }</span>
+            case 12 -&gt; {
+<span class="nc" id="L179">                ShootingArcade k= new ShootingArcade();</span>
+                
+<span class="nc" id="L181">                k.resultOfGame();</span>
+<span class="nc" id="L182">                k.onlineBooking();</span>
+<span class="nc" id="L183">                ShootingArcade.speed();</span>
+<span class="nc" id="L184">            }</span>
+            case 13 -&gt; {
+<span class="nc" id="L186">                SkeeBallGame k= new SkeeBallGame();</span>
+                
+<span class="nc" id="L188">                k.resultOfGame();</span>
+<span class="nc" id="L189">                k.onlineBooking();</span>
+<span class="nc" id="L190">                SkeeBallGame.goal();</span>
+<span class="nc" id="L191">            }</span>
+            case 14 -&gt; {
+<span class="nc" id="L193">                SplashMountain k= new SplashMountain();</span>
+               
+<span class="nc" id="L195">                k.resultOfGame();</span>
+<span class="nc" id="L196">                k.onlineBooking();</span>
+<span class="nc" id="L197">                SplashMountain.speed();</span>
+<span class="nc" id="L198">            }</span>
+            
+            case 15 -&gt; {
+<span class="nc" id="L201">                PanicRoom k= new PanicRoom();</span>
+               
+<span class="nc" id="L203">                k.resultOfGame();</span>
+<span class="nc" id="L204">                k.onlineBooking();</span>
+<span class="nc" id="L205">                PanicRoom.darkRoom();</span>
+<span class="nc" id="L206">            }</span>
+           
+          default -&gt; {
+            }
+        }
+
+        // Put things back
+<span class="nc" id="L213">        System.out.flush();</span>
+<span class="nc" id="L214">        System.setOut(old);</span>
+<span class="nc" id="L215">        String stringOutput = newStream.toString();</span>
+<span class="nc" id="L216">        return stringOutput;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
